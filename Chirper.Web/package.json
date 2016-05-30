@@ -1,0 +1,28 @@
+{
+  "name": "15-chirper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JiMinJun/15-Chirper.git"
+  },
+  "author": "Ji-Min Jun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JiMinJun/15-Chirper/issues"
+  },
+  "homepage": "https://github.com/JiMinJun/15-Chirper#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.0.0",
+    "gulp-inject": "^4.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-open": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "wiredep": "^4.0.0"
+  }
+}

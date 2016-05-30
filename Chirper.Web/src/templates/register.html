@@ -1,0 +1,15 @@
+<div class="row" id="registerScreen">
+	<div class="col-md-4 col-md-offset-4">
+		<h1 class="title text-center">GRUMBLE</h1>
+		<div class="form-group">
+			<input type="text" name="firstName" ng-model="registration.firstName" class="form-control" placeholder="First Name">
+			<input type="text" name="lastName" ng-model="registration.lastName" class="form-control" placeholder="Last Name">
+			<input type="email" name="email" ng-model="registration.emailAddress" class="form-control" placeholder="Email Address">
+			<input type="username" name="username" ng-model="registration.userName" class="form-control" placeholder="UserName">
+			<input type="password" name="password" ng-model="registration.password" class="form-control" placeholder="Password">
+			<input type="password" name="confirmPassword" ng-model="registration.confirmPassword" class="form-control" placeholder="Confirm Password">	
+			<button type="submit" class="btn btn-primary form-control" ng-click="register.register(registration)" id="registrationBtn">Register</button>
+			<a ui-sref="login" class="btn btn-link form-control">Already have an account? Log-in.</a>
+		</div>				
+	</div>
+</div>

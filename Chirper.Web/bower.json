@@ -1,0 +1,28 @@
+{
+  "name": "15-chirper",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Ji-Min Jun"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/JiMinJun/15-Chirper",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "bootstrap": "^3.3.6",
+    "angular-toastr": "^1.7.0",
+    "angular-ui-router": "^0.3.0",
+    "angular-local-storage": "^0.2.7",
+    "moment": "^2.13.0",
+    "angular-animate": "^1.5.5",
+    "angular-bootstrap": "^1.3.3",
+    "angular-click-outside": "^2.8.3"
+  }
+}

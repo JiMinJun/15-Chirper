@@ -1,0 +1,11 @@
+<div class="row" id="loginScreen" >
+	<div class="col-md-4 col-md-offset-4" >
+		<h1 class="title text-center">GRUMBLE</h1>
+		<div class="form-group">
+			<input type="text" name="username" ng-model="username" class="form-control" placeholder="UserName">
+			<input type="password" name="password" class="form-control" ng-model="password" placeholder="Password">
+			<button class="btn btn-primary pull-right form-control" type="submit" ng-click="login.login(username, password)" id="loginBtn">Log in</button>
+			<a id="registerbtn" ui-sref="register" class="btn btn-link form-control" >Join the community</a>
+		</div>
+	</div>
+</div>

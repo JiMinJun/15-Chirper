@@ -1,0 +1,76 @@
+
+.panel-body{
+  padding: 10px 10px 10px 10px;
+}
+
+#chirpbtn {
+	margin-top: 3px;
+}
+
+.panel-default {
+	margin-bottom: 5px;
+}
+
+.fade {
+  transition: 1s linear all;
+  -webkit-transition: 1s linear all;
+  margin-bottom: 0;
+}
+
+.form-group {
+	margin-bottom: 0
+}
+
+.chirpBox{
+    -webkit-transition: height 1s ease-in-out;
+    -moz-transition:height 1s ease-in-out;
+    -o-transition: height 1s ease-in-out;
+    transition: height 1s ease-in-out;
+}
+
+.chirpBox:focus{
+    height: 60px;
+}
+
+#chirpBox{
+	background-color: #E5E5E5;
+}
+
+.postDetails{
+  font-size: 13px;
+}
+
+.postActions a {
+  color: grey;
+}
+
+.postActions a:hover, a:focus {
+  color: darkblue;
+  text-decoration:underline;
+}
+
+.postText{
+  font-size: 17px;
+  margin: 3% 0 3% 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.glyphicon{
+  margin-right: 5px;
+}
+
+.commentsBtn{
+  margin: 0 10% 0 10%;
+}
+
+#myModalLabel a {
+  color: black;
+}
+
+#newChirp {
+  margin-right: 7px;
+}
+
+.disabled {
+    color: darkblue;
+}

@@ -1,0 +1,62 @@
+<div class="row" ng-init="chirp.getChirps()">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default" id="chirpBox" click-outside="minimize = true">
+            <div class="panel-heading clearfix">
+                <div class="form-group">
+                    <input type="text" class="form-control chirpBox" name="chirp" maxlength="240" ng-model="chirp.chirp.text" ng-click="minimize = false" placeholder="What's on your mind?">
+                    <span ng-show="minimize === false">
+						<button id="chirpbtn" class="btn btn-primary pull-right" type="submit" ng-click="chirp.addChirp(text); minimize = true" ><span class="glyphicon glyphicon-send" id="newChirp"></span>Chirp!</button>
+					</span>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="post in chirp.chirps track by $index">
+            <div class="panel panel-default" class="fade">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-11 col-md-offset-1">
+                            <div class="postDetails"><b><a href="">{{post.user.userName}}</a></b><span class="pull-right">{{post.createdDate | date : 'medium'}}</span></div>
+                            <div class="postText">{{post.text}}</div>
+                            <div class="postActions">
+                                <span><a class='glyphicon glyphicon-thumbs-up'  ng-click="chirp.likeChirp(post)"></a>{{post.likeCount}}</span>
+                                <span class="commentsBtn" ng-click="chirp.getComments(post.comments)"><a class="glyphicon glyphicon-comment" data-toggle="modal" data-target="#modal{{post.chirpId}}" ></a>{{post.comments.length}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal -->
+            <div class="modal fade" id="modal{{post.chirpId}}" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel"><a href="">{{post.user.userName}}</a></h4>
+                        </div>
+                        <div class="modal-body">
+                            <h4>{{post.text}}</h4>
+                            <hr/>
+                            <span><a class="glyphicon glyphicon-thumbs-up" ng-click="chirp.addLike(post)"></a>{{post.likeCount}}</span>
+                            <span class="commentsBtn"><a class="glyphicon glyphicon-comment"></a>{{post.comments.length}}</span>
+                            <span class="pull-right">{{post.createdDate | date : 'medium'}}</span><hr/>
+                            <b>Comments</b>
+							<div ng-repeat="comment in chirp.comments">
+								<div>{{comment.text}}</div>
+								<span><a class="glyphicon glyphicon-thumbs-up" ng-click="chirp.likeComment(comment)"></a>{{comment.likeCount}}</span>
+							</div>
+							
+                        </div>
+                        <div class="modal-footer">
+                        	<input type="text" name="commentReply" placeholder="Reply to post" ng-model="newComment" ">
+							<button type="submit" ng-click="chirp.addComment(post.chirpId, newComment)">Comment!</button>
+                           <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <button type="button" class="glyphicon glyphicon-comment" data-toggle="modal" href="post.modal.html"></button> -->
