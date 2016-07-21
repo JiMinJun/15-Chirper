@@ -20,7 +20,9 @@
 .form-group {
 	margin-bottom: 0
 }
-
+/* #accountBox {
+  margin-left: 2rem;
+} */
 .chirpBox{
     -webkit-transition: height 1s ease-in-out;
     -moz-transition:height 1s ease-in-out;
@@ -73,4 +75,8 @@
 
 .disabled {
     color: darkblue;
+}
+
+.comment {
+  padding: 5px 0 5px 0;
 }

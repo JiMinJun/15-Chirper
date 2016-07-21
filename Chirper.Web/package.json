@@ -1,5 +1,5 @@
 {
-  "name": "15-chirper",
+  "name": "HostelPass",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JiMinJun/15-Chirper.git"
+    "url": "git+https://github.com/wesbosse/HostelPass.git"
   },
   "author": "Ji-Min Jun",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JiMinJun/15-Chirper/issues"
+    "url": "https://github.com/wesbosse/HostelPass.git"
   },
-  "homepage": "https://github.com/JiMinJun/15-Chirper#readme",
+  "homepage": "https://github.com/wesbosse/HostelPass.git#readme",
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-connect": "^4.0.0",

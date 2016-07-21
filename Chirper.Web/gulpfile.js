@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var jsSources = ['./src/js/**/*.js'],
    cssSources = ['./src/css/**/*.css'],
-   htmlSources = ['./src/*.html'];
+   htmlSources = ['./src/**/*.html'];
 
 var paths = ['./src/lib/','./src/js/**/*.js','./src/css/**/*.css'];
 

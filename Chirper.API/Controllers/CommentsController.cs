@@ -52,18 +52,23 @@ namespace Chirper.API.Controllers
                 return BadRequest();
             }
 
+            //if user has already like the Comment do not increment LikeCount
             if (comment.LikeCount != originalComment.LikeCount)
             {
-                originalComment.LikeCount++;
-                originalComment.LikedUsers.Add(user.UserName);
-                user.LikedComments.Add(id.ToString());
+                if(!originalComment.LikedUsers.Contains(user))
+                {
+                    originalComment.LikeCount++;
+                    originalComment.LikedUsers.Add(user);
+                    user.LikedComments.Add(originalComment);
+                }
+            
             }
             if (comment.Text != originalComment.Text)
             {
                 originalComment.Text = comment.Text;
             }
 
-            db.Entry(comment).State = EntityState.Modified;
+            db.Entry(originalComment).State = EntityState.Modified;
             db.Entry(user).State = EntityState.Modified;
 
             try
@@ -96,14 +101,14 @@ namespace Chirper.API.Controllers
             {
                 return Unauthorized();
             }
-            if (user.Id != null)
-            {
-                comment.UserId = user.Id;
-            }
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            else
+            {
+                comment.UserId = user.Id;
             }
 
             comment.CreatedDate = DateTime.Now;

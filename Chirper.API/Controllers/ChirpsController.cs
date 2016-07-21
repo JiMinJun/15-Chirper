@@ -52,7 +52,7 @@ namespace Chirper.API.Controllers
             var originalChirp = db.Chirps.Find(id);
             string username = User.Identity.Name;
             var user = db.Users.FirstOrDefault(u => u.UserName == username);
-
+             
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -63,12 +63,17 @@ namespace Chirper.API.Controllers
                 return BadRequest();
             } 
 
+            //if user has already like the Chirp do not increment LikeCount
             if (chirp.LikeCount != originalChirp.LikeCount)
             {
-                originalChirp.LikeCount++;
-                originalChirp.LikedUsers.Add(user.UserName);
-
-                user.LikedChirps.Add(id.ToString());
+           
+                if (!originalChirp.LikedUsers.Contains(user))
+                {
+                    originalChirp.LikeCount++;
+                    originalChirp.LikedUsers.Add(user);
+                    user.LikedChirps.Add(originalChirp);
+                }
+                
                
             }
             if (chirp.Text != originalChirp.Text)
@@ -110,14 +115,17 @@ namespace Chirper.API.Controllers
             {
                 return Unauthorized();
             }
-            if (user.Id != null)
-            {
-                chirp.UserId = user.Id;
-            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            else
+            {
+                chirp.UserId = user.Id;
+            }
+            
 
             chirp.CreatedDate = DateTime.Now;
 

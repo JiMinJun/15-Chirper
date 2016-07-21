@@ -17,6 +17,7 @@ namespace Chirper.API.Infrastructure
             _userManager = new UserManager<ChirperUser>(new UserStore<ChirperUser>(_dataContext));
         }
 
+        //registers user and adds them to database
         public async Task<IdentityResult> RegisterUser(UserRegistrationModel userModel)
         {
             ChirperUser user = new ChirperUser
@@ -30,6 +31,7 @@ namespace Chirper.API.Infrastructure
             return result;
         }
 
+        //verifies user exists in database with provided username and password
         public async Task<ChirperUser> FindUser(string userName, string password)
         {
             ChirperUser user = await _userManager.FindAsync(userName, password);

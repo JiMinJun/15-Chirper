@@ -9,24 +9,25 @@ namespace Chirper.API.Models
     {
         public virtual ICollection<Chirp> Chirps { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public ICollection<string> LikedChirps { get; set; }
-        public ICollection<string> LikedComments { get; set; }
+        public virtual ICollection<Comment> LikedComments { get; set; }
+        public virtual ICollection<Chirp> LikedChirps { get; set; }
 
-        public string LikedCommentsAsString
-        {
-            get { return string.Join(",", LikedComments); }
-            set { LikedComments = value.Split(',').ToList(); }
-        }
-        public string LikedChirpsAsString
-        {
-            get { return string.Join(",", LikedChirps); }
-            set { LikedChirps = value.Split(',').ToList(); }
-        }
+        //public string LikedCommentsAsString
+        //{
+        //    get { return string.Join(",", LikedComments); }
+        //    set { LikedComments = value.Split(',').ToList(); }
+        //}
+        //public string LikedChirpsAsString
+        //{
+        //    get { return string.Join(",", LikedChirps); }
+        //    set { LikedChirps = value.Split(',').ToList(); }
+        //}
+        
 
-        public ChirperUser()
-        {
-            LikedChirps = new Collection<string>();
-            LikedComments = new Collection<string>();
-        }
+        //public ChirperUser()
+        //{
+        //    LikedChirps = new Collection<string>();
+        //    LikedComments = new Collection<string>();
+        //}
     }
 }

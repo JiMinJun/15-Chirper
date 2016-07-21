@@ -20,7 +20,6 @@ namespace Chirper.API.Models
         [Required]
         [StringLength(100, ErrorMessage = "The password must be at least 8 characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [Required]
@@ -30,7 +29,6 @@ namespace Chirper.API.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display(Name = "Name")]
         public string Name { get; set; }
     }
 }

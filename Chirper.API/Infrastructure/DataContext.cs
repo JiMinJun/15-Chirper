@@ -25,7 +25,8 @@ namespace Chirper.API.Infrastructure
             modelBuilder.Entity<ChirperUser>()
                 .HasMany(u => u.Chirps)
                 .WithRequired(c => c.User)
-                .HasForeignKey(c => c.UserId);
+                .HasForeignKey(c => c.UserId)
+                .WillCascadeOnDelete(false);
 
             // configure one to many relationship between user and comment
             modelBuilder.Entity<ChirperUser>()
@@ -33,6 +34,17 @@ namespace Chirper.API.Infrastructure
                 .WithRequired(c => c.User)
                 .HasForeignKey(c => c.UserId)
                 .WillCascadeOnDelete(false);
+
+
+            modelBuilder.Entity<Chirp>()
+                .HasMany(c => c.LikedUsers)
+                .WithMany(u => u.LikedChirps)
+                .Map(cfg => cfg.ToTable("ChirpLikes"));
+
+            modelBuilder.Entity<Comment>()
+                .HasMany(c => c.LikedUsers)
+                .WithMany(u => u.LikedComments)
+                .Map(cfg => cfg.ToTable("CommentLikes"));
 
             base.OnModelCreating(modelBuilder);
         }

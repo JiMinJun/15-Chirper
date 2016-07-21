@@ -1,5 +1,15 @@
 <div class="row" ng-init="chirp.getChirps()">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-3">
+        <div class="panel panel-default" id="accountBox">
+            <div class="panel panel-body">
+                ADD USER INFO HERE
+            </div>
+            <div class="panel panel-footer">
+                Posts:
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="panel panel-default" id="chirpBox" click-outside="minimize = true">
             <div class="panel-heading clearfix">
                 <div class="form-group">
@@ -43,7 +53,7 @@
                             <span class="pull-right">{{post.createdDate | date : 'medium'}}</span><hr/>
                             <b>Comments</b>
 							<div ng-repeat="comment in chirp.comments">
-								<div>{{comment.text}}</div>
+								<div class="comment">{{comment.text}}</div>
 								<span><a class="glyphicon glyphicon-thumbs-up" ng-click="chirp.likeComment(comment)"></a>{{comment.likeCount}}</span>
 							</div>
 							
