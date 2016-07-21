@@ -11,77 +11,92 @@
     function ChirpsCtrl(toastr, chirpsService, $state, $filter, commentsService, localStorageService) {
         var vm = this;
         vm.title = 'ChirpsCtrl';
+        vm.likeComment = likeComment;
+        vm.likeChirp = likeChirp;
+        vm.getChirps = getChirps;
+        vm.getComments = getComments;
+        vm.addChirp = addChirp;
+        vm.addChirp = addComment;
+
 
         ////////////////
-        vm.getChirps = function() {
-        	chirpsService.getChirps()
-        				 .then(function(response) {
-                            
-        				 	vm.chirps = response;
-                            vm.chirps.reverse();
+        function getChirps() {
+            chirpsService.getChirps()
+                .then(function(response) {
 
-                            vm.chirps.forEach(function(chirp) {
-                                if(chirp.likedUsers.length === 0) {
-                                    chirp.alreadyLiked = false;
+                    vm.chirps = response;
+                    vm.chirps.reverse();
+
+                    vm.chirps.forEach(function(chirp) {
+                        if (chirp.likedUsers.length === 0) {
+                            chirp.alreadyLiked = false;
+                        }
+                        if (!chirp.comments) {
+                            chirp.comments.length = 0;
+                        } 
+
+                        //if someone has already like chirp mark it as liked
+                        else {
+                            chirp.likedUsers.forEach(function(user) {
+                                if (user.userName == localStorageService.get('username')) {
+                                    chirp.alreadyLiked = true;
                                 }
-                                if(!chirp.comments) {
-                                    chirp.comments.length =0;
-                                }
-                                else {
-                                    chirp.likedUsers.forEach(function(user) {
-                                        if (user == localStorageService.get('username')) {
-                                            chirp.alreadyLiked = true;
-                                        }
-                                    })
-                                }   
-                                
-                            })
-        				 });
+                            });
+                        }
+                    });
+                });
         };
 
-        vm.addChirp = function(text) {
-        	chirpsService.addChirp(vm.chirp)
-        				 .then(function(response) {
-                            vm.chirps.unshift(response.data);
-        				 	console.log(response);
-        				 	toastr.success("Chirp!");
-                            vm.chirp = {};
-        				 });
+        function addChirp(text) {
+            chirpsService.addChirp(vm.chirp)
+                .then(function(response) {
+                    vm.chirps.unshift(response.data);
+                    toastr.success("Chirp!");
+                    vm.chirp = {};
+                });
         };
 
-        vm.addComment = function(chirpId,text) {
-            commentsService.addComment(chirpId,text)
-                .then(function(response){
-                    console.log(response);
+        function addComment(chirpId, text) {
+            commentsService.addComment(chirpId, text)
+                .then(function(response) {
                     vm.comments.push(response.data);
                 });
         }
 
-        vm.getComments = function(comments) {
-            vm.comments = comments;
-            console.log(vm.comments);
+        function getComments(comments) {
+            vm.comments = comments
+
+            //if someone has already like comment mark it as liked
+            vm.comments.forEach(function(comment) {
+                comment.likedUsers.forEach(function(user) {
+                    if (user.userName == localStorageService.get('username')) {
+                        comment.alreadyLiked = true;
+                    }
+                })
+            });
         }
 
-        vm.likeChirp = function(chirp) {
-            if(chirp.alreadyLiked == true) {
+        function likeChirp(chirp) {
+            //if chirp has been like already do not let them like it again
+            if (chirp.alreadyLiked == true) {
                 return;
-            }
-            else {
+            } else {
                 chirpsService.likeChirp(chirp).then(function() {
                     chirp.alreadyLiked = true;
                 });
             }
-            
         }
 
-        vm.likeComment = function(comment) {
-            chirpsService.likeComment(comment);
+        function likeComment(comment) {
+            //if comment has been like already do not let them like it again
+            if (comment.alreadyLiked) {
+                return;
+            }
+            commentsService.likeComment(comment)
+                .then(function(response) {
+                    comment.alreadyLiked = true;
+                });
         }
-
-/*        vm.sortChirps = function (order) {
-                vm.chirps = $filter('orderBy')(vm.chirps, order);
-                console.log(vm.chirps);
-            };*/  
 
     }
 })();

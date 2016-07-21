@@ -10,7 +10,8 @@
     /* @ngInject */
     function commentsService($q, $http, apiUrl) {
         var service = {
-            addComment: addComment
+            addComment: addComment,
+            likeComment: likeComment
         };
         return service;
 
@@ -35,7 +36,7 @@
         function likeComment(comment) {
             var defer = $q.defer();
             comment.likeCount++;
-            console.log(chirp);
+            console.log(comment);
             $http({
                 method: 'PUT',
                 url: apiUrl + 'comments/' + comment.commentId ,

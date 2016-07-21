@@ -25,7 +25,6 @@
                 url: apiUrl + 'chirps'
             }).then(function(response) {
                 defer.resolve(response.data);
-                console.log(response.data);
             }, function(err) {
                 defer.reject(err)
             });
@@ -40,7 +39,6 @@
                 data: chirp
             }).then(function(response) {
                 defer.resolve(response);
-                console.log(response);
             }, function(err) {
                 defer.reject(err);
             })
@@ -51,7 +49,6 @@
         function likeChirp(chirp) {
             var defer = $q.defer();
             chirp.likeCount++;
-            console.log(chirp);
             $http({
                 method: 'PUT',
                 url: apiUrl + 'chirps/' + chirp.chirpId ,

@@ -32,6 +32,8 @@ namespace Chirper.API.Controllers
             return Ok();
         }
 
+
+        //custom error method
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {
             if (result == null)
