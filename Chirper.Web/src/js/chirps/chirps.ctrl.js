@@ -16,7 +16,7 @@
         vm.getChirps = getChirps;
         vm.getComments = getComments;
         vm.addChirp = addChirp;
-        vm.addChirp = addComment;
+        vm.addComment = addComment;
 
 
         ////////////////
@@ -37,6 +37,7 @@
 
                         //if someone has already like chirp mark it as liked
                         else {
+                            chirp.likeCount = chirp.likedUsers.length;
                             chirp.likedUsers.forEach(function(user) {
                                 if (user.userName == localStorageService.get('username')) {
                                     chirp.alreadyLiked = true;
@@ -68,6 +69,7 @@
 
             //if someone has already like comment mark it as liked
             vm.comments.forEach(function(comment) {
+                comment.likeCount = comment.likedUsers.length;
                 comment.likedUsers.forEach(function(user) {
                     if (user.userName == localStorageService.get('username')) {
                         comment.alreadyLiked = true;

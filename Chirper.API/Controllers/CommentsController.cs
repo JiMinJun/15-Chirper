@@ -53,16 +53,13 @@ namespace Chirper.API.Controllers
             }
 
             //if user has already like the Comment do not increment LikeCount
-            if (comment.LikeCount != originalComment.LikeCount)
+            if(!originalComment.LikedUsers.Contains(user))
             {
-                if(!originalComment.LikedUsers.Contains(user))
-                {
-                    originalComment.LikeCount++;
+                    
                     originalComment.LikedUsers.Add(user);
                     user.LikedComments.Add(originalComment);
-                }
-            
             }
+
             if (comment.Text != originalComment.Text)
             {
                 originalComment.Text = comment.Text;

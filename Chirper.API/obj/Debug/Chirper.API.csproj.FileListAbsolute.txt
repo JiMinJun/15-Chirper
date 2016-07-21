@@ -115,3 +115,4 @@ C:\dev\15-Chirper\Chirper.API\obj\Debug\Chirper.API.csprojResolveAssemblyReferen
 C:\dev\15-Chirper\Chirper.API\obj\Debug\Chirper.API.Migrations.initial.resources
 C:\dev\15-Chirper\Chirper.API\obj\Debug\Chirper.API.csproj.GenerateResource.Cache
 C:\dev\15-Chirper\Chirper.API\obj\Debug\Chirper.API.Migrations.createdrelationshipbetweenchirpslikesandcommentlikes.resources
+C:\dev\15-Chirper\Chirper.API\obj\Debug\Chirper.API.Migrations.removedLikeCount.resources

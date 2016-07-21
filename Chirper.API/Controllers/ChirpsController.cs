@@ -64,18 +64,14 @@ namespace Chirper.API.Controllers
             } 
 
             //if user has already like the Chirp do not increment LikeCount
-            if (chirp.LikeCount != originalChirp.LikeCount)
+            
+            if (!originalChirp.LikedUsers.Contains(user))
             {
-           
-                if (!originalChirp.LikedUsers.Contains(user))
-                {
-                    originalChirp.LikeCount++;
-                    originalChirp.LikedUsers.Add(user);
-                    user.LikedChirps.Add(originalChirp);
-                }
-                
-               
+                    
+                originalChirp.LikedUsers.Add(user);
+                user.LikedChirps.Add(originalChirp);
             }
+                
             if (chirp.Text != originalChirp.Text)
             {
                 originalChirp.Text = chirp.Text;

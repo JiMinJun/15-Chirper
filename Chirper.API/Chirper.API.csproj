@@ -157,6 +157,10 @@
     <Compile Include="Migrations\201607210530266_created relationship between chirpslikes and commentlikes.Designer.cs">
       <DependentUpon>201607210530266_created relationship between chirpslikes and commentlikes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607212215356_removed LikeCount.cs" />
+    <Compile Include="Migrations\201607212215356_removed LikeCount.Designer.cs">
+      <DependentUpon>201607212215356_removed LikeCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Chirp.cs" />
     <Compile Include="Models\Comment..cs" />
@@ -185,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607210530266_created relationship between chirpslikes and commentlikes.resx">
       <DependentUpon>201607210530266_created relationship between chirpslikes and commentlikes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607212215356_removed LikeCount.resx">
+      <DependentUpon>201607212215356_removed LikeCount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
