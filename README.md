@@ -1,4 +1,4 @@
-# 15-Chirper
+#Chirper
 
 Mock of twitter application.
 
